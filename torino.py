@@ -1,7 +1,5 @@
 import re
 
-import re
-
 all_data = {}
 prj_name = ""
 prj_rev = ""
