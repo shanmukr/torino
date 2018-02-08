@@ -50,8 +50,7 @@ opt = input("Choose the below options.\n\t\t\t1. Add Project.\n\t\t\t2. Update P
 
 if opt:
   print( type(opt))
-
-"""
+    """
   if ( opt== "1" | opt == "2" | opt == "3" ):
     opt = int(opt)
   else:
