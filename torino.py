@@ -10,7 +10,6 @@ def torino_data():
   prj_test = ""
   prj_field = ""
   prj_value = ""
-  test = {}
   
   lines = open("torino.acc.block.xml", "r")
   for i in lines.readlines():
@@ -50,8 +49,21 @@ def torino_data():
   return all_data
 
 def add_project():
-  #c = torino_data()
-  return 'c'
+  project      = input("Enter the Project Name : ")
+  revision     = input("Enter the Revision Name : ")
+  block        = input("Enter the Block Name : ")
+  comments     = input("Enter the Comments : ")
+  test         = input("Enter the Test Name : ")
+  if project and revision and block and test and comments:
+    old_data = torino_data()
+    if old_data and project not in old_data.keys():
+      pr_lines = open("project.xml", "r")
+      for i in pr_lines:
+        print( i )
+    else:
+      print("hey hey\n")
+  else:
+    print("not satisfied\n")
 
 opt = input("Choose the below options.\n\t\t\t1.Add Project.\n\t\t\t2.Update Project.\n\t\t\t3.Delete Project.\n")
 
@@ -62,8 +74,7 @@ if opt and opt.isdigit():
     if opt_add and opt_add.isdigit():
       opt_add = int(opt_add)
       if( opt_add == 1 ):
-        a = add_project()
-        print(a) 
+        add_project()
       else:
         print(type(opt_add), opt_add)
   elif( opt == 2 ): 
