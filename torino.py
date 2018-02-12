@@ -48,6 +48,20 @@ def torino_data():
   lines.close()
   return all_data
 
+def aa():
+  line = open("project.xml", "r")
+  lines = line.readlines()
+  line.close()
+  
+  line_a = open("a.txt", "r+")
+  for i in line_a.readlines():
+    match = re.match(r'.*\<\w+_type\>\w+\<\/\w+_type\>', i)
+    if match:
+      for j in lines: 
+        line_a.write(j)
+    break
+  line_a.close()
+
 def add_project():
   project      = input("Enter the Project Name : ")
   revision     = input("Enter the Revision Name : ")
