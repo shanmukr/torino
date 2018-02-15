@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<blocklist>
+ 	<xml_file_type>block</xml_file_type>
+ 	<block>
+ 	 	<project>torino</project>
+ 	 	<project_rev>r1_tsmcn20soc</project_rev>
+ 	 	<block_name>ACC</block_name>
+ 	 	<comments>comments here</comments>
+ 	 	<testlist>
+      <test>
+        <testname>acc_rma_permen_initfct</testname>
+        <testname>acc_tag_shared</testname>
+        <testname>acc_ws_exittest</testname>
+        <testname>acc_ws_startacc</testname>
+        <testname>qfprom_sys_reset_disable</testname>
+      </test>
+ 	 	</testlist>
+ 	</block>
+ 	<block>
+ 	 	<project>torino1</project>
+ 	 	<project_rev>r1p1_tsmcn20soc</project_rev>
+ 	 	<block_name>ACC</block_name>
+ 	 	<comments>comments here</comments>
+ 	 	<testlist>
+ 	 	 	<test>
+ 	 	 	 	<testname>acc_rma_permen_initfct</testname>
+ 	 	 	 	<testname>acc_tag_sharednvmrd</testname>
+ 	 	 	 	<testname>acc_ws_exittest</testname>
+ 	 	 	 	<testname>acc_ws_startacc</testname>
+ 	 	 	 	<testname>qfprom_sys_reset_disable</testname>
+ 	 	 	</test>
+ 	 	</testlist>
+ 	</block>
+ 	<block>
+ 	 	<project>torino2</project>
+ 	 	<project_rev>r2_tsmcn20soc</project_rev>
+ 	 	<block_name>ACC</block_name>
+ 	 	<comments>comments here</comments>
+ 	 	<testlist>
+ 	 	 	<test>
+ 	 	 	 	<testname>acc_rma_permen_initfct</testname>
+ 	 	 	 	<testname>acc_tag_sharednvmrd</testname>
+ 	 	 	 	<testname>acc_ws_exittest</testname>
+ 	 	 	 	<testname>acc_ws_startacc</testname>
+ 	 	 	 	<testname>qfprom_sys_reset_disable</testname>
+ 	 	 	</test>
+ 	 	</testlist>
+ 	</block>
+</blocklist>

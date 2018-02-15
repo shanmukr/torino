@@ -1,6 +1,70 @@
 #!/usr/bin/python3
 import re
 
+def remove_data():
+  a = input("enetr the project name : ")
+  lines = open("sample.xml", 'r')
+  line = lines.readlines()
+  lines.close()
+  b = ""
+  c = 0
+
+  for i in line:
+    m = re.match(r'.*\<(project)\>(.*)\<\/\1\>', i)
+    if m and m.group(2) == a:
+      b = m.group(2)
+    if b:
+      if re.match(r'.*\<\/testlist\>', i):
+        c = 1
+      if c != 1:
+        i = re.sub(r'(\<.*\>).*(\<\/.*\>)', r'\1\2', i)
+    f = open("a.xml", 'a')
+    f.write(i)
+    f.close
+
+def projects_data():
+  all_data = {}
+  prj_name = ""
+  prj_rev = ""
+  prj_block = ""
+  prj_comment = ""
+  prj_test = ""
+  prj_field = ""
+  prj_value = ""
+
+  lines = open("projects.xml", "r")
+  for i in lines.readlines():
+    if re.match(r'\s+\<xml_file_type\>.*', i):
+      continue
+    match_obj = re.match(r'\s+\<project\>(\w+).*', i)
+    if match_obj:
+      prj_name = match_obj.group(1)
+      all_data[prj_name] = {}
+      all_data[prj_name]["test"] = []
+      continue
+    pro_rev = re.match(r'\s+\<project_rev\>(\w+).*', i)
+    if pro_rev:
+      prj_rev = pro_rev.group(1)
+      all_data[prj_name]["revision"] = prj_rev
+      continue
+    pro_block = re.match(r'\s+\<block_name\>(\w+).*', i)
+    if pro_block:
+      prj_block = pro_block.group(1)
+      all_data[prj_name]["block"] = prj_block
+      continue
+    pro_comments = re.match(r'\s+\<comments\>(\w+.*)\<.*', i)
+    if pro_comments:
+      prj_comment = pro_comments.group(1)
+      all_data[prj_name]["comments"] = prj_comment
+      continue
+    pro_test = re.match(r'\s+\<(testname)\>(\w+)\<\/\1\>', i)
+    if pro_test:
+      prj_test = pro_test.group(2)
+      all_data[prj_name]["test"].append(prj_test)
+      continue
+  lines.close()
+  return all_data
+
 def torino_data():
   all_data = {}
   prj_name = ""
@@ -48,7 +112,7 @@ def torino_data():
   lines.close()
   return all_data
 
-def aa():
+def write_data():
   line = open("project.xml", "r")
   lines = line.readlines()
   line.close()
@@ -69,15 +133,13 @@ def add_project():
   comments     = input("Enter the Comments : ")
   test         = input("Enter the Test Name : ")
   if project and revision and block and test and comments:
-    old_data = torino_data()
+    old_data = projects_data()
     if old_data and project not in old_data.keys():
-      pr_lines = open("project.xml", "r")
-      for i in pr_lines:
-        print( i )
+      print("added data\n")
     else:
-      print("hey hey\n")
+      print("the given project '{}' is already exists. please enter the unique data.".format(project))
   else:
-    print("not satisfied\n")
+    print("all values are mandatory\n")
 
 opt = input("Choose the below options.\n\t\t\t1.Add Project.\n\t\t\t2.Update Project.\n\t\t\t3.Delete Project.\n")
 
